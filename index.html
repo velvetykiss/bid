@@ -68,6 +68,18 @@
       border-color: #234f8d;
       box-shadow: 0 0 0 3px rgba(35,79,141,.10);
     }
+    .field.invalid input, .field.invalid textarea {
+      border-color: #c62828;
+      background: #fff7f7;
+    }
+    .field-error {
+      display: none;
+      margin: 7px 0 0;
+      font-size: 13px;
+      color: #c62828;
+      line-height: 1.5;
+    }
+    .field.invalid .field-error { display: block; }
     textarea { min-height: 180px; resize: vertical; line-height: 1.6; }
     .file-box {
       border: 1px dashed #b9c3d2;
@@ -137,25 +149,29 @@
       </p>
 
       <form id="proposalForm">
-        <div class="field">
+        <div class="field" id="field-lawFirm">
           <label>법무법인명 <span class="required">*</span></label>
           <input type="text" id="lawFirm" required maxlength="100" placeholder="법무법인명을 입력해주세요.">
+          <p class="field-error">법무법인명을 2자 이상 입력해주세요.</p>
         </div>
 
-        <div class="field">
+        <div class="field" id="field-contactName">
           <label>담당자명 <span class="required">*</span></label>
           <input type="text" id="contactName" required maxlength="50" placeholder="담당자명을 입력해주세요.">
+          <p class="field-error">담당자명을 2자 이상 입력해주세요.</p>
         </div>
 
-        <div class="field">
+        <div class="field" id="field-phone">
           <label>연락처 <span class="required">*</span></label>
-          <input type="tel" id="phone" required maxlength="30" placeholder="연락 가능한 전화번호를 입력해주세요.">
+          <input type="tel" id="phone" required maxlength="30" placeholder="연락 가능한 전화번호를 입력해주세요. (예: 010-1234-5678)">
+          <p class="field-error">올바른 전화번호 형식으로 입력해주세요. (숫자와 - 만 사용, 9~13자리)</p>
         </div>
 
-        <div class="field">
+        <div class="field" id="field-proposalText">
           <label>간략한 제안 내용 <span class="required">*</span></label>
           <textarea id="proposalText" required maxlength="5000"
             placeholder="제안의 주요 내용, 업무 범위, 차별점 등을 간략하게 작성해주세요."></textarea>
+          <p class="field-error">제안 내용을 10자 이상 입력해주세요.</p>
         </div>
 
         <div class="field">
@@ -212,8 +228,64 @@
       notice.className = 'notice ' + type;
     }
 
+    function markInvalid(fieldId) {
+      document.getElementById('field-' + fieldId).classList.add('invalid');
+    }
+
+    function clearInvalid(fieldId) {
+      document.getElementById('field-' + fieldId).classList.remove('invalid');
+    }
+
+    // 입력하는 동안에는 오류 표시를 바로 해제
+    ['lawFirm', 'contactName', 'phone', 'proposalText'].forEach((id) => {
+      document.getElementById(id).addEventListener('input', () => clearInvalid(id));
+    });
+
+    function validateFields() {
+      const lawFirm = document.getElementById('lawFirm').value.trim();
+      const contactName = document.getElementById('contactName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const proposalText = document.getElementById('proposalText').value.trim();
+
+      const phonePattern = /^[0-9-]{9,13}$/;
+
+      let firstInvalidId = null;
+
+      ['lawFirm', 'contactName', 'phone', 'proposalText'].forEach((id) => clearInvalid(id));
+
+      if (lawFirm.length < 2) {
+        markInvalid('lawFirm');
+        firstInvalidId = firstInvalidId || 'lawFirm';
+      }
+      if (contactName.length < 2) {
+        markInvalid('contactName');
+        firstInvalidId = firstInvalidId || 'contactName';
+      }
+      if (!phonePattern.test(phone)) {
+        markInvalid('phone');
+        firstInvalidId = firstInvalidId || 'phone';
+      }
+      if (proposalText.length < 10) {
+        markInvalid('proposalText');
+        firstInvalidId = firstInvalidId || 'proposalText';
+      }
+
+      if (firstInvalidId) {
+        const el = document.getElementById(firstInvalidId);
+        el.focus();
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return false;
+      }
+      return true;
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      if (!validateFields()) {
+        showNotice('입력하신 내용을 다시 확인해주세요.', 'error');
+        return;
+      }
 
       const proposalFile = document.getElementById('proposalFile').files[0];
       const businessCardFile = document.getElementById('businessCardFile').files[0];
