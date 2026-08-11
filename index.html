@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수자인 그라센트 2차 법무법인 선정 입찰</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f4f6f9;
+      color: #172033;
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Malgun Gothic", sans-serif;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 18px 60px; }
+    .hero {
+      overflow: hidden;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 8px 30px rgba(0,0,0,.08);
+      margin-bottom: 24px;
+    }
+    .hero img { display: block; width: 100%; height: auto; }
+    .links {
+      padding: 18px 24px 22px;
+      background: #fff;
+      border-top: 1px solid #e8edf4;
+      display: grid;
+      gap: 10px;
+    }
+    .links a {
+      color: #174b91;
+      text-decoration: underline;
+      font-weight: 600;
+      word-break: break-all;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    .desc { margin: 0 0 26px; color: #657085; line-height: 1.6; }
+    .field { margin-bottom: 20px; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .required { color: #c62828; }
+    input[type="text"], input[type="tel"], textarea {
+      width: 100%;
+      border: 1px solid #d7dde7;
+      border-radius: 10px;
+      padding: 13px 14px;
+      font-size: 15px;
+      outline: none;
+      background: #fff;
+    }
+    input:focus, textarea:focus {
+      border-color: #234f8d;
+      box-shadow: 0 0 0 3px rgba(35,79,141,.10);
+    }
+    textarea { min-height: 180px; resize: vertical; line-height: 1.6; }
+    .file-box {
+      border: 1px dashed #b9c3d2;
+      border-radius: 12px;
+      padding: 16px;
+      background: #fafbfd;
+    }
+    .file-box input { width: 100%; }
+    .hint { margin: 7px 0 0; font-size: 13px; color: #7b8494; line-height: 1.5; }
+    .submit {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 15px 18px;
+      background: #0d315f;
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .submit:disabled { opacity: .55; cursor: wait; }
+    .notice {
+      display: none;
+      margin-top: 18px;
+      padding: 15px;
+      border-radius: 10px;
+      line-height: 1.5;
+    }
+    .notice.success { display: block; background: #edf8f0; color: #17652a; }
+    .notice.error { display: block; background: #fff0f0; color: #a52222; }
+    .privacy {
+      margin-top: 18px;
+      padding: 14px;
+      background: #f7f8fa;
+      border-radius: 10px;
+      color: #70798a;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 12px 10px 40px; }
+      .form-card { padding: 20px 16px; }
+      h1 { font-size: 23px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <img src="수자인2차 법무법인 선정 입찰.png" alt="수자인 그라센트 2차 법무법인 선정 입찰 공고">
+      <div class="links">
+        <a href="https://url.kr/thinfa" target="_blank" rel="noopener noreferrer">
+          홈페이지: https://url.kr/thinfa
+        </a>
+        <a href="mailto:killxeno@naver.com">
+          E-mail: killxeno@naver.com
+        </a>
+        <a href="https://cafe.naver.com/pmsujain2" target="_blank" rel="noopener noreferrer">
+          공식카페: https://cafe.naver.com/pmsujain2
+        </a>
+      </div>
+    </section>
+
+    <section class="form-card">
+      <h1>법무법인 제안서 접수</h1>
+      <p class="desc">
+        수자인 그라센트 2차 입주예정자협의회의 법무법인 선정을 위한 제안서를 접수합니다.
+        아래 내용을 작성하고 제안서를 첨부해주세요.
+      </p>
+
+      <form id="proposalForm">
+        <div class="field">
+          <label>법무법인명 <span class="required">*</span></label>
+          <input type="text" id="lawFirm" required maxlength="100" placeholder="법무법인명을 입력해주세요.">
+        </div>
+
+        <div class="field">
+          <label>담당자명 <span class="required">*</span></label>
+          <input type="text" id="contactName" required maxlength="50" placeholder="담당자명을 입력해주세요.">
+        </div>
+
+        <div class="field">
+          <label>연락처 <span class="required">*</span></label>
+          <input type="tel" id="phone" required maxlength="30" placeholder="연락 가능한 전화번호를 입력해주세요.">
+        </div>
+
+        <div class="field">
+          <label>간략한 제안 내용 <span class="required">*</span></label>
+          <textarea id="proposalText" required maxlength="5000"
+            placeholder="제안의 주요 내용, 업무 범위, 차별점 등을 간략하게 작성해주세요."></textarea>
+        </div>
+
+        <div class="field">
+          <label>제안서 파일 <span class="required">*</span></label>
+          <div class="file-box">
+            <input type="file" id="proposalFile" required
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+            <p class="hint">PDF, DOC, DOCX / 최대 20MB</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>명함 이미지 <span style="font-weight:400;color:#7b8494;">(선택)</span></label>
+          <div class="file-box">
+            <input type="file" id="businessCardFile" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp">
+            <p class="hint">JPG, PNG, WEBP / 선택사항 / 최대 20MB</p>
+          </div>
+        </div>
+
+        <button class="submit" id="submitBtn" type="submit">제안서 제출</button>
+        <div id="notice" class="notice"></div>
+
+        <div class="privacy">
+          제출된 정보와 첨부파일은 법무법인 선정 및 제안서 검토를 위한 목적으로만 관리합니다.
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    const form = document.getElementById('proposalForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const notice = document.getElementById('notice');
+
+    function fileToObject(file) {
+      return new Promise((resolve, reject) => {
+        if (!file) return resolve(null);
+        const reader = new FileReader();
+        reader.onload = () => resolve({
+          name: file.name,
+          mimeType: file.type,
+          data: reader.result
+        });
+        reader.onerror = () => reject(new Error('파일을 읽을 수 없습니다.'));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function showNotice(message, type) {
+      notice.textContent = message;
+      notice.className = 'notice ' + type;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const proposalFile = document.getElementById('proposalFile').files[0];
+      const businessCardFile = document.getElementById('businessCardFile').files[0];
+
+      if (!proposalFile) {
+        showNotice('제안서 파일을 첨부해주세요.', 'error');
+        return;
+      }
+
+      if (proposalFile.size > 20 * 1024 * 1024) {
+        showNotice('제안서 파일은 20MB 이하로 첨부해주세요.', 'error');
+        return;
+      }
+
+      if (businessCardFile && businessCardFile.size > 20 * 1024 * 1024) {
+        showNotice('명함 이미지는 20MB 이하로 첨부해주세요.', 'error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '제출 중입니다...';
+      notice.className = 'notice';
+      notice.textContent = '';
+
+      try {
+        const [proposal, card] = await Promise.all([
+          fileToObject(proposalFile),
+          fileToObject(businessCardFile)
+        ]);
+
+        const payload = {
+          lawFirm: document.getElementById('lawFirm').value,
+          contactName: document.getElementById('contactName').value,
+          phone: document.getElementById('phone').value,
+          proposalText: document.getElementById('proposalText').value,
+          proposalFile: proposal,
+          businessCardFile: card
+        };
+
+        google.script.run
+          .withSuccessHandler((result) => {
+            showNotice('제안서가 정상적으로 접수되었습니다. 감사합니다.', 'success');
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = '제안서 제출';
+          })
+          .withFailureHandler((error) => {
+            showNotice(error && error.message ? error.message : '제출 중 오류가 발생했습니다.', 'error');
+            submitBtn.disabled = false;
+            submitBtn.textContent = '제안서 제출';
+          })
+          .submitProposal(payload);
+
+      } catch (err) {
+        showNotice(err.message || '파일 처리 중 오류가 발생했습니다.', 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = '제안서 제출';
+      }
+    });
+  </script>
+</body>
+</html>
