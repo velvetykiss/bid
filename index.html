@@ -21,6 +21,11 @@
       margin-bottom: 24px;
     }
     .hero img { display: block; width: 100%; height: auto; }
+    .hero .img-mobile { display: none; }
+    @media (max-width: 640px) {
+      .hero .img-desktop { display: none; }
+      .hero .img-mobile { display: block; }
+    }
     .links {
       padding: 18px 24px 22px;
       background: #fff;
@@ -112,11 +117,9 @@
 <body>
   <div class="wrap">
     <section class="hero">
-      <img src="수자인2차 법무법인 선정 입찰.png" alt="수자인 그라센트 2차 법무법인 선정 입찰 공고">
+      <img class="img-desktop" src="수자인2차 법무법인 선정 입찰.png" alt="수자인 그라센트 2차 법무법인 선정 입찰 공고">
+      <img class="img-mobile" src="수자인2차 법무법인 선정 입찰(모).png" alt="수자인 그라센트 2차 법무법인 선정 입찰 공고">
       <div class="links">
-        <a href="https://url.kr/thinfa" target="_blank" rel="noopener noreferrer">
-          홈페이지: https://url.kr/thinfa
-        </a>
         <a href="mailto:killxeno@naver.com">
           E-mail: killxeno@naver.com
         </a>
@@ -184,7 +187,7 @@
 
   <script>
     // ⚠️ 아래 URL을 Apps Script '웹 앱으로 배포'한 후 나오는 주소(.../exec)로 반드시 교체하세요.
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxv5Q8Pnowl265d1XaFi1Bz93_32V1EVWYS1ypMz1ddGP2WXHIl-jyIeLn8gayIlBS8/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/여기에_배포된_스크립트ID/exec';
 
     const form = document.getElementById('proposalForm');
     const submitBtn = document.getElementById('submitBtn');
